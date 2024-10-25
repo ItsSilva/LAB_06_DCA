@@ -17,6 +17,17 @@ export class Song extends HTMLElement {
         }
     }
 
+    formatDate(dateString: string) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+
     async render() {
         const styles = `
             :host {
@@ -32,7 +43,7 @@ export class Song extends HTMLElement {
 
             .song-item {
                 display: grid;
-                grid-template-columns: 40px 3fr 2fr 1fr 1fr;
+                grid-template-columns: 40px 3fr 2fr 1fr 1fr 1fr;
                 align-items: center;
                 padding: 8px 16px;
                 background-color: #282828;
@@ -76,7 +87,7 @@ export class Song extends HTMLElement {
                 margin: 0;
             }
 
-            .song-date {
+            .song-date, .song-added {
                 font-size: 14px;
                 color: #909090;
                 margin: 0;
@@ -110,6 +121,7 @@ export class Song extends HTMLElement {
                 <h3 class="song-album">${product.album}</h3>
                 <h3 class="song-date">${product.date}</h3>
                 <h3 class="song-duration">${product.duration}</h3>
+                <h3 class="song-added">${product.addedAt ? this.formatDate(product.addedAt) : 'N/A'}</h3>
             `;
             songList.appendChild(songItem);
         });

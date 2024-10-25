@@ -8,7 +8,8 @@ const product = {
     album: 'Music product album',
     date: 'Music product date',
     duration: 'Music product duration',
-    image: ''
+    image: '',
+    addedAt: ''
 }
 
 class AppContainer extends HTMLElement {
@@ -55,6 +56,7 @@ class AppContainer extends HTMLElement {
     }
 
     async submitForm() {
+        product.addedAt = new Date().toISOString();
         await addProduct(product);
         if (this.songComponent) {
             await this.songComponent.updateSongs();
