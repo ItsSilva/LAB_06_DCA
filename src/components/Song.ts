@@ -43,7 +43,8 @@ export class Song extends HTMLElement {
 
             .song-item {
                 display: grid;
-                grid-template-columns: 40px 3fr 2fr 1fr 1fr 1fr;
+                grid-template-columns: 40px 2.5fr 1.5fr 1fr 0.7fr 1.5fr;
+                gap: 16px;
                 align-items: center;
                 padding: 8px 16px;
                 background-color: #282828;
@@ -97,7 +98,6 @@ export class Song extends HTMLElement {
                 font-size: 14px;
                 color: #909090;
                 margin: 0;
-                text-align: right;
             }
         `;
 
